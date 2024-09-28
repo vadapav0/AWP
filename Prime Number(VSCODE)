@@ -1,0 +1,30 @@
+using System;
+namespace TestPrime
+{
+    class Program
+    {
+        static void Main(string[] args){
+            int num, counter, result;
+            Console.WriteLine("Enter Number:");
+            num = int.Parse(Console.ReadLine());
+            if (num == 1){
+                Console.WriteLine(num + " is neither prime nor composite");
+            }
+            else{
+                result = 0;
+                for (counter = 2; counter < num; counter++){
+                    if (num % counter == 0){
+                        result = 0;
+                        break; 
+                    }
+                }
+                if (result == 0){
+                    Console.WriteLine(num + " is not a prime number.");
+                }
+                else{
+                    Console.WriteLine(num + " is a prime number.");
+                }
+            }
+        }
+    }
+}
