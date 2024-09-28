@@ -1,0 +1,51 @@
+using System;
+namespace CurrencyConversion
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int choice;
+            Console.WriteLine("Enter your choice:\n1 - Dollarto Rupee\n2 - Euro to Rupee\n3 -Malaysian Ringgit to Rupee");
+        if (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > 3)
+            {
+                Console.WriteLine("Invalid choice. Please select a valid option (1, 2, or 3).");
+                return;
+            }
+            switch (choice)
+            {
+                case 1:
+                    ConvertCurrency("Dollar", "Rupee");
+                    break;
+                case 2:
+                    ConvertCurrency("Euro", "Rupee");
+                    break;
+                case 3:
+                    ConvertCurrency("Malaysian Ringgit", "Rupee");
+                    break;
+                default:
+                    Console.WriteLine("Unexpected error. Please select a valid option.");
+                    break;
+            }
+            Console.ReadLine();
+        }
+        static void ConvertCurrency(string fromCurrency, string toCurrency)
+        {
+            double amount, value, convertedAmount;
+            Console.WriteLine($"Enter the amount in {fromCurrency}: ");
+            if (!double.TryParse(Console.ReadLine(), out amount) || amount < 0)
+            {
+                Console.WriteLine("Invalid amount. Please enter a positive number.");
+                return;
+            }
+            Console.WriteLine($"Enterthe {fromCurrency} to {toCurrency} conversion rate: ");
+            if (!double.TryParse(Console.ReadLine(), out value) || value <= 0)
+            {
+                Console.WriteLine("Invalid conversion rate. Please enter a positive number.");
+                return;
+            }
+            convertedAmount = amount * value;
+            Console.WriteLine($"{amount} {fromCurrency} equals {convertedAmount} {toCurrency}");
+        }
+    }
+}
