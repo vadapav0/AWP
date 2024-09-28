@@ -1,0 +1,84 @@
+----------------Program.cs------------------
+using System;
+namespace multilevelinheritance
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Result r1 = new Result(101, "Tauseef", 50, 70);
+            r1.display();
+        }
+    }
+}
+
+----------------Result.cs------------------
+using System;
+namespace multilevelinheritance
+{
+    class Result : Test
+    {
+        int total;
+        public Result(int roll_no, string name, int marks1, int marks2): base(roll_no, name, marks1, marks2)
+        {
+            total = getMarks1() + getMarks2();
+        }
+        public void display()
+        {
+            base.display();
+            Console.WriteLine("Total: " + total);
+        }
+    }
+}
+
+-------------------test.cs----------------------
+using System;
+namespace multilevelinheritance
+{
+    class Test : student
+    {
+        int marks1, marks2;
+        public Test(int roll_no, string name, int marks1, int marks2)
+        : base(roll_no, name)
+        {
+            this.marks1 = marks1;
+            this.marks2 = marks2;
+        }
+        public int getMarks1()
+        {
+            return marks1;
+        }
+        public int getMarks2()
+        {
+            return marks2;
+        }
+        public void dispaly()
+        {
+            base.display();
+            Console.WriteLine("Marks1: " + marks1);
+            Console.WriteLine("Marks2: " + marks2);
+        }
+    }
+}
+
+---------------------Student.cs------------------------
+using System;
+namespace multilevelinheritance
+{
+    class student
+    {
+        int roll_no;
+        string name;
+        public student(int roll_no, string name)
+        {
+            this.roll_no = roll_no;
+            this.name = name;
+        }
+        public student() { }
+        public void display()
+        {
+            Console.WriteLine("Roll no: " + roll_no);
+            Console.WriteLine("Name: " + name);
+        }
+    }
+}
