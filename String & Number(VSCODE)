@@ -1,0 +1,29 @@
+using System;
+
+namespace cmdLineArgs
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            if (args.Length < 2)
+            {
+                Console.WriteLine("Please provide both a string and a number as command-line arguments.");
+                return;
+            }
+
+            string str = args[0];
+
+            int n;
+            if (int.TryParse(args[1], out n))
+            {
+                Console.WriteLine("String: " + str);
+                Console.WriteLine("Number: " + n);
+            }
+            else
+            {
+                Console.WriteLine("The second argument is not a valid number.");
+            }
+        }
+    }
+}
