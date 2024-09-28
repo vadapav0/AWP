@@ -1,0 +1,62 @@
+----------------Furniture.cs-------------------
+using System;
+namespace SingleInheritance
+{
+    class Furniture
+    {
+        string material;
+        float price;
+        public void getdata()
+        {
+            Console.Write("Enter material : ");
+            material = Console.ReadLine();
+            Console.Write("Enter price : ");
+            price = float.Parse(Console.ReadLine());
+        }
+        public void showdata()
+        {
+            Console.WriteLine("Material : " + material);
+            Console.WriteLine("Price : " + price);
+        }
+    }
+}
+
+---------------------Table.cs-----------------------
+using System;
+namespace SingleInheritance
+{
+    class Table : Furniture
+    {
+        int height, surface_area;
+        public void getdata()
+        {
+            base.getdata();
+            Console.Write("Enter height: ");
+            height = int.Parse(Console.ReadLine());
+            Console.Write("Enter surface area: ");
+            surface_area = int.Parse(Console.ReadLine());
+        }
+        public void showdata()
+        {
+            base.showdata();
+            Console.WriteLine("Height : " + height);
+            Console.WriteLine("Surface Area : " + surface_area);
+        }
+    }
+}
+
+
+----------------Program.cs------------------
+using System;
+namespace SingleInheritance
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Table t1 = new Table();
+            t1.getdata();
+            t1.showdata();
+        }
+    }
+}
