@@ -58,11 +58,11 @@ namespace HeirarchicalInheritance
 using System;
 namespace HeirarchicalInheritance
 {
-    class Programmer : employee
+    class Manager
     {
         public void display()
         {
-            Console.WriteLine(" Display of Programmer class called ");
+            Console.WriteLine("Display of manager class called ");
         }
     }
 }
