@@ -1,0 +1,66 @@
+-------------------WebForm1.aspx-------------------------
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="Practical_6.WebForm1" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <h2>Book List</h2>
+            <asp:DataList ID="dlBooks" runat="server" RepeatColumns="2">
+                <ItemTemplate>
+                    <div style="margin-bottom: 10px; padding: 10px; border: 1px solid #ccc;">
+                        <h3><%#Eval("Title") %></h3>
+                        <p>Author: <%#Eval("Author") %></p>
+                        <p>Price: $<%# Eval("Price", "{0:F2}") %></p>
+                        <p>Price: $<%# Eval("Price", "{0:F2}") %></p>
+                    </div>
+                </ItemTemplate>
+            </asp:DataList>
+        </div>
+    </form>
+</body>
+</html>
+
+-------------------WebForm1.aspx.cs-------------------------
+using System;
+using System.Collections.Generic;
+using System.Web.UI;
+
+namespace Practical_6
+{
+    public partial class WebForm1 : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                BindDataList();
+            }
+        }
+
+        private void BindDataList()
+        {
+            List<Book> books = new List<Book>
+            {
+                new Book { Title = "The Great Gatsby", Author = "F. Scott Fitzgerald", Price = 12.99m },
+                new Book { Title = "To Kill a Mockingbird", Author = "George Orwell", Price = 11.99m },
+                new Book { Title = "Pride and Prejudice", Author = "Jane Austen", Price = 9.99m }
+            };
+
+            dlBooks.DataSource = books;
+            dlBooks.DataBind();
+        }
+    }
+
+    public class Book
+    {
+        public string Title { get; set; }
+        public string Author { get; set; }
+        public decimal Price { get; set; }
+    }
+}
+
