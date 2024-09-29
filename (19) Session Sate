@@ -1,0 +1,54 @@
+-------------------WebFrom1.aspx-------------------------
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="Practical_5C2.WebForm1" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Session State Demo</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:TextBox ID="txtName" runat="server"></asp:TextBox>
+            <asp:Button ID="btnSaveSession" runat="server" Text="Save to Session"
+                OnClick="btnSaveSession_Click" />
+            <asp:Label ID="lblSessionResult" runat="server"></asp:Label>
+            <asp:Button ID="btnRetrieveSession" runat="server" Text="Retrieve from Session"
+                OnClick="btnRetrieveSession_Click" />
+        </div>
+    </form>
+</body>
+</html>
+
+
+-------------------WebFrom1.aspx-------------------------
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+
+namespace Practical_5C2
+{
+    public partial class WebForm1 : System.Web.UI.Page
+    {
+        protected void btnSaveSession_Click(object sender, EventArgs e)
+        {
+            Session["UserName"] = txtName.Text;
+            lblSessionResult.Text = "Name saved to session!";
+        }
+        protected void btnRetrieveSession_Click(object sender, EventArgs e)
+        {
+            if (Session["UserName"] != null)
+            {
+                lblSessionResult.Text = "Stored Name: " + Session["UserName"].ToString();
+            }
+            else
+            {
+                lblSessionResult.Text = "No name found in session";
+            }
+        }
+    }
+}
