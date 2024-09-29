@@ -1,0 +1,48 @@
+------------------------WebForm.asp---------------------------
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="Practical_4A.WebForm1" %>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Advertisements</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:AdRotator
+                ID="AdRotator1"
+                runat="server"
+                DataSourceID="XmlDataSource1"
+                Target="_blank"
+                AutoPostBack="True" />
+            <asp:XmlDataSource ID="XmlDataSource1" runat="server" DataFile="~/ADFile.xml" />
+        </div>
+    </form>
+</body>
+</html>
+
+------------------------ADFile.xml---------------------------
+<Advertisements>
+  <Ad>
+    <ImageUrl>bike.jpg</ImageUrl>
+    <NavigateUrl>https://www.bikewale.com/bajaj-bikes/pulsar-ns/</NavigateUrl>
+    <AlternateText>
+      PULSAR NS 200
+    </AlternateText>
+    <Impressions>20</Impressions>
+    <Keyword>flowers</Keyword>
+  </Ad>
+  <Ad>
+    <ImageUrl>bike2.jpg</ImageUrl>
+    <NavigateUrl>https://www.bikewale.com/bajaj-bikes/pulsar-ns400/</NavigateUrl>
+    <AlternateText>PULSAR NS 400</AlternateText>
+    <Impressions>20</Impressions>
+    <Keyword>gifts</Keyword>
+  </Ad>
+  <Ad>
+    <ImageUrl>bike3.jpg</ImageUrl>
+    <NavigateUrl>https://www.bikewale.com/bajaj-bikes/rs-200/</NavigateUrl>
+    <AlternateText>PULSAR RS 200</AlternateText>
+    <Impressions>20</Impressions>
+    <Keyword>russia</Keyword>
+  </Ad>
+</Advertisements>
