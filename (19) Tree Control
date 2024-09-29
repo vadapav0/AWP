@@ -1,0 +1,111 @@
+--------------WebForm.aspx------------------
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="Practical_3A2.WebForm1" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            Treeview control navigation:
+        <asp:TreeView ID="TreeView1" runat="server" Width="150px" ImageSet="Arrows">
+            <HoverNodeStyle Font-Underline="True" ForeColor="#5555DD" />
+            <Nodes>
+                <asp:TreeNode Text="ASP.NET Practs" Value="New Node">
+                    <asp:TreeNode Text="Calendar Control" Value="RED" NavigateUrl="~/calndrCtrl.aspx"></asp:TreeNode>
+                    <asp:TreeNode Text="Constructor Overloading" Value="GREEN" NavigateUrl="~/clsconstrc.aspx"></asp:TreeNode>
+                    <asp:TreeNode Text="Inheritance" Value="BLUE" NavigateUrl="~/singleInh.aspx"></asp:TreeNode>
+                    <asp:TreeNode Text="Class Properties" Value="Class Properties" NavigateUrl="~/clsProp.aspx"></asp:TreeNode>
+                </asp:TreeNode>
+            </Nodes>
+            <NodeStyle Font-Names="Tahoma" Font-Size="10pt" ForeColor="Black" HorizontalPadding="5px" NodeSpacing="0px" VerticalPadding="0px" />
+            <ParentNodeStyle Font-Bold="False" />
+            <SelectedNodeStyle Font-Underline="True" ForeColor="#5555DD" HorizontalPadding="0px" VerticalPadding="0px" />
+        </asp:TreeView>
+            <br />
+            Fetch Datalist Using XML data:
+        </div>
+        <asp:DataList ID="DataList" runat="server">
+            <ItemTemplate>
+                <table class="table" border="1">
+                    <tr>
+                        <td>Roll Num: <%# Eval("sid") %><br />
+                            Name: <%# Eval("sname") %><br />
+                            Class: <%# Eval("sclass") %>
+                        </td>
+                    </tr>
+                </table>
+            </ItemTemplate>
+        </asp:DataList>
+    </form>
+</body>
+</html>
+
+
+--------------WebForm.aspx.cs------------------
+using System.Data;
+namespace Practical_3A2
+{
+    public partial class WebForm1 : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, System.EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                BindData();
+            }
+        }
+        protected void BindData()
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                ds.ReadXml(Server.MapPath("stdetail.xml"));
+                if (ds != null && ds.Tables.Count > 0)
+                {
+                    DataList.DataSource = ds;
+                    DataList.DataBind();
+                }
+                else
+                {
+                    // Handle empty dataset scenario
+                    DataList.DataSource = null;
+                    DataList.DataBind();
+                }
+            }
+            catch (System.Exception ex)
+            {
+                // Log the error and notify the user
+                Response.Write($"Error reading XML: {ex.Message}");
+            }
+        }
+
+    }
+}
+
+-----------------stdetail.xml---------------------
+<?xml version="1.0" encoding="utf-8" ?>
+<studentdetail>
+  <student>
+    <sid>1</sid>
+    <sname>Tushar</sname>
+    <sclass>TYIT</sclass>
+  </student>
+  <student>
+    <sid>2</sid>
+    <sname>Sonali</sname>
+    <sclass>TYCS</sclass>
+  </student>
+  <student>
+    <sid>3</sid>
+    <sname>Yashashree</sname>
+    <sclass>TYIT</sclass>
+  </student>
+  <student>
+    <sid>4</sid>
+    <sname>Vedshree</sname>
+    <sclass>TYCS</sclass>
+  </student>
+</studentdetail>
