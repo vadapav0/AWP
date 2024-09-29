@@ -1,0 +1,55 @@
+----------------------WebForm1.aspx----------------------------
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="Practical_8.WebForm1" %>
+
+<!DOCTYPE html>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Simple AJAX Demo</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        
+        <div>
+            <h1>Simple AJAX Demo</h1>
+            
+            <h2>1. UpdatePanel Example</h2>
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>
+                    <asp:Label ID="lblTime" runat="server" Text=""></asp:Label><br />
+                    <asp:Button ID="btnUpdateTime" runat="server" Text="Update Time" OnClick="btnUpdateTime_Click" />
+                </ContentTemplate>
+            </asp:UpdatePanel>
+           
+            
+        </div>
+    </form>
+</body>
+</html>
+
+
+
+----------------------WebForm1.aspx----------------------------
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace Practical_8{
+    public partial class WebForm1 : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+        protected void btnUpdateTime_Click(object sender, EventArgs e)
+        {
+            lblTime.Text = "Current time:" + DateTime.Now.ToString("HH:mm:ss");
+        }
+    }
+}
