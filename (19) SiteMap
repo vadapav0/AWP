@@ -1,0 +1,87 @@
+-------------------------DeFAULT.ASPX-----------------------
+<%@ Page Title="About" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="About.aspx.cs" Inherits="Practical_5A2.About" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+ <h1>Welcome to the Home Page</h1>
+ <p>This is the main content of the home page.</p>
+</asp:Content>
+
+
+-------------------------Site.Master-----------------------
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:Menu ID="NavigationMenu" runat="server" DataSourceID="SiteMapDataSource1" Orientation="Horizontal">
+            </asp:Menu>
+            <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />
+            
+            <asp:SiteMapPath ID="SiteMapPath1" runat="server">
+            </asp:SiteMapPath>
+            
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            
+            <asp:TreeView ID="TreeView1" runat="server" DataSourceID="SiteMapDataSource1">
+            </asp:TreeView>
+        </div>
+    </form>
+</body>
+</html>
+
+
+-------------------------Products.aspx-----------------------
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Products.aspx.cs" Inherits="Practical_5A2.Product1" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <h1>This is Product Page</h1>
+        </div>
+    </form>
+</body>
+</html>
+
+-------------------------Product1.aspx-----------------------
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Product2.aspx.cs" Inherits="Practical_5A2.Product2" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <h2>Product 1 Page</h2>
+        </div>
+    </form>
+</body>
+</html>
+
+
+-------------------------Web.sitemap-----------------------
+<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode url="~/WebForm1.aspx" title="Home" description="Home page">
+    <siteMapNode url="~/About.aspx" title="About" description="About page" />
+    <siteMapNode url="~/Contact.aspx" title="Contact" description="Contact page" />
+    <siteMapNode url="~/Products.aspx" title="Products" description="Products page">
+      <siteMapNode url="~/Product1.aspx" title="Product 1" description="Product 1 page" />
+      <siteMapNode url="~/Product2.aspx" title="Product 2" description="Product 2 page" />
+    </siteMapNode>
+  </siteMapNode>
+</siteMap>
