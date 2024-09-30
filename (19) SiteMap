@@ -1,20 +1,12 @@
--------------------------DeFAULT.ASPX-----------------------
-<%@ Page Title="About" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="About.aspx.cs" Inherits="Practical_5A2.About" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
- <h1>Welcome to the Home Page</h1>
- <p>This is the main content of the home page.</p>
-</asp:Content>
+Site.Master
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="_5.Site1" %>
 
-
--------------------------Site.Master-----------------------
 <!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head runat="server">
-    <title></title>
+    <title>Master Page</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
+        <!-- This will be filled by content pages -->
     </asp:ContentPlaceHolder>
 </head>
 <body>
@@ -28,6 +20,7 @@
             </asp:SiteMapPath>
             
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                
             </asp:ContentPlaceHolder>
             
             <asp:TreeView ID="TreeView1" runat="server" DataSourceID="SiteMapDataSource1">
@@ -38,50 +31,124 @@
 </html>
 
 
--------------------------Products.aspx-----------------------
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Products.aspx.cs" Inherits="Practical_5A2.Product1" %>
-
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div>
-            <h1>This is Product Page</h1>
-        </div>
-    </form>
-</body>
-</html>
-
--------------------------Product1.aspx-----------------------
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Product2.aspx.cs" Inherits="Practical_5A2.Product2" %>
-
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div>
-            <h2>Product 1 Page</h2>
-        </div>
-    </form>
-</body>
-</html>
-
-
--------------------------Web.sitemap-----------------------
+Web.sitemap
 <?xml version="1.0" encoding="utf-8" ?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
-  <siteMapNode url="~/WebForm1.aspx" title="Home" description="Home page">
-    <siteMapNode url="~/About.aspx" title="About" description="About page" />
-    <siteMapNode url="~/Contact.aspx" title="Contact" description="Contact page" />
-    <siteMapNode url="~/Products.aspx" title="Products" description="Products page">
-      <siteMapNode url="~/Product1.aspx" title="Product 1" description="Product 1 page" />
-      <siteMapNode url="~/Product2.aspx" title="Product 2" description="Product 2 page" />
-    </siteMapNode>
+  <siteMapNode url="~/Default.aspx" title="Home"  description="Home page">
+    <siteMapNode url ="/About.aspx" title="About"  description="About page" />
+    <siteMapNode url ="/Contact.aspx" title="Contact"  description="Contact page" />
+	<siteMapNode url ="/Products.aspx" title="Products"  description="Products" />
+	<siteMapNode url ="~/Product1.aspx" title="Product 1"  description="Product 1 page" />
+	<siteMapNode url ="~/Product2.aspx" title="Product 2"  description="Product 2 page" />
   </siteMapNode>
 </siteMap>
+
+
+Default.aspx
+<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="_5.Default" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <meta charset="utf-8" />
+    <title>My Content Page</title>
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <h1>Welcome to my content page!</h1>
+    <p>This is the content that will appear in the main content section.</p>
+</asp:Content>
+
+About.aspx
+<%@ Page Title="About Us" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="About.aspx.cs" Inherits="_5.About" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <meta charset="utf-8" />
+    <title>About Us</title>
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <h1>About Us</h1>
+    <p>Welcome to our company! We are dedicated to providing the best services to our customers.</p>
+    <p>Our mission is to deliver quality and excellence in everything we do.</p>
+</asp:Content>
+
+
+Contact.aspx
+<%@ Page Title="Contact Us" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="_5.Contact" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <meta charset="utf-8" />
+    <title>Contact Us</title>
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <h1>Contact Us</h1>
+    <p>If you have any questions, feel free to reach out:</p>
+    <p>Email: <a href="mailto:info@company.com">info@company.com</a></p>
+    <p>Phone: 9987601353</p>
+    <p>Address: 123 Main St, Anytown, USA</p>
+</asp:Content>
+
+
+Products.aspx
+<%@ Page Title="Our Products" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Products.aspx.cs" Inherits="_5.Products" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <meta charset="utf-8" />
+    <title>Our Products</title>
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <h1>Our Products</h1>
+    <ul>
+        <li><a href="Product1.aspx">Product 1</a></li>
+        <li><a href="Product2.aspx">Product 2</a></li>
+    </ul>
+</asp:Content>
+
+
+Product1.aspx
+<%@ Page Title="Product 1" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Product1.aspx.cs" Inherits="_5.Product1" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <meta charset="utf-8" />
+    <title>Product 1 - Great Gadget</title>
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <h1>Product 1: Great Gadget</h1>
+    <img src="~/Images/great-gadget.jpg" alt="Great Gadget" style="width:300px;height:auto;" />
+    <p>Experience the latest technology with the Great Gadget. Designed for convenience and efficiency, this gadget is perfect for both personal and professional use.</p>
+    <p><strong>Price:</strong> $49.99</p>
+    <h3>Features:</h3>
+    <ul>
+        <li>Compact and lightweight design</li>
+        <li>Long battery life</li>
+        <li>Advanced functionality with user-friendly interface</li>
+        <li>Available in various colors</li>
+    </ul>
+    <p>For more information, contact us at <a href="mailto:info@company.com">info@company.com</a>.</p>
+</asp:Content>
+
+
+Product2.aspx
+<%@ Page Title="Product 2" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Product2.aspx.cs" Inherits="_5.Product2" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <meta charset="utf-8" />
+    <title>Product 2 - Smart Widget</title>
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <h1>Product 2: Smart Widget</h1>
+    <img src="~/Images/smart-widget.jpg" alt="Smart Widget" style="width:300px;height:auto;" />
+    <p>The Smart Widget is your ultimate companion for daily tasks. This innovative product combines style and functionality, making it a must-have in every household.</p>
+    <p><strong>Price:</strong> $39.99</p>
+    <h3>Features:</h3>
+    <ul>
+        <li>Smart connectivity with multiple devices</li>
+        <li>Stylish design that fits any environment</li>
+        <li>Durable and easy to clean</li>
+        <li>Customizable settings for personal preference</li>
+    </ul>
+    <p>For inquiries, please reach us at <a href="mailto:info@company.com">info@company.com</a>.</p>
+</asp:Content>
