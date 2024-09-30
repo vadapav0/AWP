@@ -1,5 +1,5 @@
--------------------WebForm1.aspx---------------
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="Practical_5C1.WebForm1" %>
+// Default.aspx
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="ViewStateDemo.Default" %>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -10,37 +10,36 @@
     <form id="form1" runat="server">
         <div>
             <h1>ViewState Demo</h1>
+            
             <h2>1. Basic ViewState</h2>
             <asp:TextBox ID="txtBasic" runat="server"></asp:TextBox>
-            <asp:Button ID="btnBasic" runat="server" Text="Update"
-                OnClick="btnBasic_Click" />
+            <asp:Button ID="btnBasic" runat="server" Text="Update" OnClick="btnBasic_Click" />
             <asp:Label ID="lblBasic" runat="server"></asp:Label>
-            <h2>2.ViewState Disabled</h2>
-            <asp:TextBox ID="txtDisabled" runat="server"
-                EnableViewState="false"></asp:TextBox>
-            <asp:Button ID="btnDisabled" runat="server" Text="Update"
-                OnClick="btnDisabled_Click" />
+            
+            <h2>2. ViewState Disabled</h2>
+            <asp:TextBox ID="txtDisabled" runat="server" EnableViewState="false"></asp:TextBox>
+            <asp:Button ID="btnDisabled" runat="server" Text="Update" OnClick="btnDisabled_Click" />
             <asp:Label ID="lblDisabled" runat="server"></asp:Label>
-            <h3>3. Custom ViewState</h3>
+            
+            <h2>3. Custom ViewState</h2>
             <asp:TextBox ID="txtCustom" runat="server"></asp:TextBox>
-            <asp:Button ID="btnCustom" runat="server" Text="Increment"
-                OnClick="btnCustom_Click" />
+            <asp:Button ID="btnCustom" runat="server" Text="Increment" OnClick="btnCustom_Click" />
             <asp:Label ID="lblCustom" runat="server"></asp:Label>
         </div>
     </form>
 </body>
 </html>
 
--------------------WebForm1.aspx.cs---------------
+
+
+
+
+// Default.aspx.cs
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-namespace Practical_5C1
+
+namespace ViewStateDemo
 {
-    public partial class WebForm1 : System.Web.UI.Page
+    public partial class Default : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -49,14 +48,17 @@ namespace Practical_5C1
                 ViewState["Counter"] = 0;
             }
         }
+
         protected void btnBasic_Click(object sender, EventArgs e)
         {
             lblBasic.Text = $"You entered: {txtBasic.Text}";
         }
+
         protected void btnDisabled_Click(object sender, EventArgs e)
         {
             lblDisabled.Text = $"You entered: {txtDisabled.Text}";
         }
+
         protected void btnCustom_Click(object sender, EventArgs e)
         {
             int counter = (int)ViewState["Counter"];
